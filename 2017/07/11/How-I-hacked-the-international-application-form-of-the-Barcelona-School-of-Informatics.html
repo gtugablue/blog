@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>How I hacked the international application form of the Barcelona School of Informatics</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="//gtugablue.github.io/blog/themes/casper/assets/built/screen.css?v=1530748741559" />
+
+    <link rel="canonical" href="https://gtugablue.github.io/blog/2017/07/11/How-I-hacked-the-international-application-form-of-the-Barcelona-School-of-Informatics.html" />
+    <meta name="referrer" content="origin" />
+    
+    <meta property="og:site_name" content="" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="How I hacked the international application form of the Barcelona School of Informatics" />
+    <meta property="og:description" content="As part of the incoming admission procedure of my Erasmus destination institution, Barcelona School of Informatics, an application form had to be filled with information about me and the courses I planned on attending. Therefore, there is a section of the form where students can choose from a drop-down list" />
+    <meta property="og:url" content="https://gtugablue.github.io/blog/2017/07/11/How-I-hacked-the-international-application-form-of-the-Barcelona-School-of-Informatics.html" />
+    <meta property="og:image" content="https://user-images.githubusercontent.com/3010353/27766233-786715f2-5ec1-11e7-8725-79d14de0ce81.png" />
+    <meta property="article:published_time" content="2017-07-11T00:00:00.000Z" />
+    <meta property="article:tag" content="Hack" />
+    <meta property="article:tag" content="FIB" />
+    <meta property="article:tag" content="SQL_Injection" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="How I hacked the international application form of the Barcelona School of Informatics" />
+    <meta name="twitter:description" content="As part of the incoming admission procedure of my Erasmus destination institution, Barcelona School of Informatics, an application form had to be filled with information about me and the courses I planned on attending. Therefore, there is a section of the form where students can choose from a drop-down list" />
+    <meta name="twitter:url" content="https://gtugablue.github.io/blog/2017/07/11/How-I-hacked-the-international-application-form-of-the-Barcelona-School-of-Informatics.html" />
+    <meta name="twitter:image:src" content="https://user-images.githubusercontent.com/3010353/27766233-786715f2-5ec1-11e7-8725-79d14de0ce81.png" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "",
+    "author": {
+        "@type": "Person",
+        "name": "Gustavo Silva",
+        "image": "https://avatars3.githubusercontent.com/u/3010353?v=4",
+        "url": "https://gtugablue.github.io/blog/author/gtugablue/",
+        "sameAs": "http://gustavosilva.me",
+        "description": "Computer Engineering student at FEUP"
+    },
+    "headline": "How I hacked the international application form of the Barcelona School of Informatics",
+    "url": "https://gtugablue.github.io/blog/2017/07/11/How-I-hacked-the-international-application-form-of-the-Barcelona-School-of-Informatics.html",
+    "datePublished": "2017-07-11T00:00:00.000Z",
+    "image": "https://user-images.githubusercontent.com/3010353/27766233-786715f2-5ec1-11e7-8725-79d14de0ce81.png",
+    "keywords": "Hack, FIB, SQL_Injection",
+    "description": "As part of the incoming admission procedure of my Erasmus destination institution, Barcelona School of Informatics, an application form had to be filled with information about me and the courses I planned on attending. Therefore, there is a section of the form where students can choose from a drop-down list"
+}
+    </script>
+
+    <meta name="generator" content="HubPress" />
+    <link rel="alternate" type="application/rss+xml" title="" href="https://gtugablue.github.io/blog/rss/" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/themes/prism-okaidia.min.css">
+    
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+
+</head>
+<body class="post-template tag-Hack tag-FIB tag-SQL-Injection">
+
+    <div class="site-wrapper">
+
+        
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+            <div class="site-nav-left">
+                        <a class="site-nav-logo" href="https://gtugablue.github.io/blog"></a>
+            </div>
+            <div class="site-nav-right">
+                <div class="social-links">
+                </div>
+                    <a class="rss-button" href="https://feedly.com/i/subscription/feed/https://gtugablue.github.io/blog/rss/" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="6.18" cy="17.82" r="2.18"/><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/></svg>
+        </a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+
+<main id="site-main" class="site-main outer">
+    <div class="inner">
+
+        <article class="post-full post tag-Hack tag-FIB tag-SQL-Injection ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="2017-07-11">11 July 2017</time>
+                </section>
+                <h1 class="post-full-title">How I hacked the international application form of the Barcelona School of Informatics</h1>
+            </header>
+
+            <figure class="post-full-image" style="background-image: url(https://user-images.githubusercontent.com/3010353/27766233-786715f2-5ec1-11e7-8725-79d14de0ce81.png)">
+            </figure>
+
+            <section class="post-full-content">
+                <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>As part of the incoming admission procedure of my Erasmus destination institution, <a href="http://www.fib.upc.edu/">Barcelona School of Informatics</a>, an application form had to be filled with information about me and the courses I planned on attending.</p>
+</div>
+<div class="paragraph">
+<p>Therefore, there is a section of the form where students can choose from a drop-down list the courses they want to attend. When the "Add" button is pressed, an asynchronous request is sent to the server and the course gets added to the table.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://user-images.githubusercontent.com/3010353/27766229-64b076f2-5ec1-11e7-8824-17a3be3c1c69.png" alt="International application form">
+</div>
+<div class="title">Figure 1. International application form</div>
+</div>
+<div class="paragraph">
+<p>Unfortunately for me, I noticed one of my courses was not listed because it was not being offered for exchange students. So I replaced the HTML of the drop-down in order to include that specific course that was missing and was able to add it to my list of subjects, since there was no further server-side validation taking place. Obviously, I ended up deleting it, because I did not want someone to later tell me I could not enroll in that course.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_finding_the_vulnerability">Finding the vulnerability</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Eventually, I tested the system for <a href="https://www.owasp.org/index.php/SQL_Injection">SQL Injection</a> by adding an apostrophe to the initials of the subject name:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://user-images.githubusercontent.com/3010353/27766230-64b09bc8-5ec1-11e7-9ab1-4d930c6af9d6.png" alt="SQL Injection vulnerability test">
+</div>
+<div class="title">Figure 2. SQL Injection vulnerability test</div>
+</div>
+<div class="paragraph">
+<p>Indeed, the system was vulnerable to SQL Injection attacks. The server receives the list of courses selected and replies with the HTML code of the new drop-down, without the already selected courses. The client sends the list of currently selected courses as a string made of their initials separated by commas (e.g. <code>AGT,AM,AMMM</code>), but that string was not being properly escaped before being sent to the database.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_exploiting_the_vulnerability">Exploiting the vulnerability</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>I am not very experienced with this kind of attacks, but one way of performing them (after finding the vulnerability) is to use the <a href="https://www.w3schools.com/sql/sql_union.asp">UNION operator</a> to join the already existing SELECT statement with a new SELECT statement written by the exploiter. The challenge is to craft a statement that is similar to the original one, since it must contain the same amount of columns and with the same type.</p>
+</div>
+<div class="paragraph">
+<p>If the number of columns in my test string doesn&#8217;t match the number of columns in the original statement, the database will throw the following error:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>ORA-01789: query block has incorrect number of result columns.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Therefore, one way of finding the right amount of columns and their types is by trial and error (<a href="https://websec.ca/kb/sql_injection#MySQL_Tables_And_Columns">but there are faster methods</a>). Fortunately, in this specific case, the whole query was being output to the user, which meant that I could easily count the number of columns and find their types. The original query returned a total of 6 columns with types where the 1st and 4th were numbers and the rest were strings.</p>
+</div>
+<div class="paragraph">
+<p>Now that I had information about the original query, I proceeded with my attempt to do an SQL Injection attack taking advantage of the UNION operator. This was my input string:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>A' UNION
+    SELECT
+    a1.codi_assig,
+    a1.sigles,
+    a1.nom,
+    a1.credits,
+    a1.titulacio,
+    a2.quadri
+    FROM rriiassig--</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>My objective with this string was to replicate the original query, selecting the exact same columns, just to test if everything would work properly. The last two hyphens are used to start an inline comment, which means that the rest of the original query that follows them would be ignored. However, the database replied with the following error:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>ORA-00923 FROM keyword not found where expected</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After analyzing the query, I noticed that my string was being changed before being sent to the database:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>A' UNION
+    SELECT a1.codi_assig' AND sigles!='
+    a1.sigles' AND sigles!='
+    a1.nom' AND sigles!='
+    a1.credits' AND sigles!='
+    a1.titulacio' AND sigles!='
+    a2.quadri
+    FROM rriiassig--</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Wherever my input had a comma character, it would be replaced by the string <code>' AND sigles !='</code>. As mentioned above, the normal user input would be a list of subjects separated by commas, so the idea of replacing the commas by such string was to select only the subjects with <em>sigles</em> (initials) different to the ones in the input list. The result of this selection would then be the content of the new drop-down list, where the user could continue adding other courses.
+This meant that my string could not contain any commas, as these were being replaced by a different text.</p>
+</div>
+<div class="paragraph">
+<p><strong>But how to do a SQL SELECT query for 6 columns without using a comma to separate the different fields?</strong> This is possible by cross joining 6 different subqueries where each of those subqueries returns only one column, such as:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>A' UNION
+    SELECT * FROM (SELECT 1 FROM rriiassig)
+    CROSS JOIN (SELECT 'aaa' FROM rriiassig)
+    CROSS JOIN (SELECT 'bbb' FROM rriiassig)
+    CROSS JOIN (SELECT 4 FROM rriiassig)
+    CROSS JOIN (SELECT 'ccc' FROM rriiassig)
+    CROSS JOIN (SELECT 'Q1' FROM rriiassig) --</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>I ran this query and&#8230;&#8203; Oops, the server went down for a couple minutes due to the huge size of my query (cross joining 6 tables). I should have filtered my query by applying a LIMIT to one or more fields. That&#8217;s when I stopped my investigation and emailed the institution with information on the security exploit, so I still don&#8217;t know if the vulnerability gave me access to the database of the international page only or if that database was also used in different locations for different purposes. They answered the day after:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>[&#8230;&#8203;] We&#8217;ve reproduced the bug and looking at the source code, all the application form application uses parametrized SQL except the subject part! [&#8230;&#8203;]"</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; Jaume Moral Ros - Facultat d'Informàtica de Barcelona
+</div>
+</div>
+<div class="paragraph">
+<p>The issue was then fixed in less than a week.</p>
+</div>
+</div>
+</div>
+            </section>
+
+
+            <footer class="post-full-footer">
+
+
+                    
+                    <section class="author-card">
+                            <img class="author-profile-image" src="https://avatars3.githubusercontent.com/u/3010353?v&#x3D;4" alt="Gustavo Silva" />
+                        <section class="author-card-content">
+                            <h4 class="author-card-name"><a href="https://gtugablue.github.io/blog/author/gtugablue/">Gustavo Silva</a></h4>
+                                <p>Computer Engineering student at FEUP</p>
+                        </section>
+                    </section>
+                    <div class="post-full-footer-right">
+                        <a class="author-card-button" href="https://gtugablue.github.io/blog/author/gtugablue/">Read More</a>
+                    </div>
+                    
+
+            </footer>
+
+
+
+        </article>
+
+    </div>
+</main>
+
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+
+
+
+        </div>
+    </div>
+</aside>
+
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://gtugablue.github.io/blog">
+            <span></span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">How I hacked the international application form of the Barcelona School of Informatics</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=How%20I%20hacked%20the%20international%20application%20form%20of%20the%20Barcelona%20School%20of%20Informatics&amp;url=https://gtugablue.github.io/blog/2017/07/11/How-I-hacked-the-international-application-form-of-the-Barcelona-School-of-Informatics.html"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://gtugablue.github.io/blog/2017/07/11/How-I-hacked-the-international-application-form-of-the-Barcelona-School-of-Informatics.html"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+
+
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://gtugablue.github.io/blog"></a> &copy; 2018</section>
+                <nav class="site-footer-nav">
+                    <a href="https://gtugablue.github.io/blog">Latest Posts</a>
+                    
+                    
+                    
+                    
+                    
+                    <a href="https://hubpress.github.io" target="_blank" rel="noopener">HubPress</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="//gtugablue.github.io/blog/themes/casper/assets/js/jquery.fitvids.js?v=1530748741559"></script>
+
+
+    <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+
+});
+</script>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js?v="></script> <script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/prism.min.js?v="></script> 
+      <script type="text/javascript">
+        jQuery( document ).ready(function() {
+          // change date with ago
+          jQuery('ago.ago').each(function(){
+            var element = jQuery(this).parent();
+            element.html( moment(element.text()).fromNow());
+          });
+        });
+
+        // hljs.initHighlightingOnLoad();
+      </script>
+
+
+</body>
+</html>

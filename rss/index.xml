@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://gtugablue.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Wed, 04 Jul 2018 23:58:40 GMT</lastBuildDate><atom:link href="https://gtugablue.github.io/blog/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Hello World!]]></title><description><![CDATA[<div class="paragraph">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://gtugablue.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Wed, 04 Jul 2018 23:59:01 GMT</lastBuildDate><atom:link href="https://gtugablue.github.io/blog/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Hello World!]]></title><description><![CDATA[<div class="paragraph">
 <p>This is the first post of my new personal blog, where I will briefly present myself and the purpose of this blog.</p>
 </div>
 <div class="paragraph">
@@ -6,7 +6,134 @@
 </div>
 <div class="paragraph">
 <p>At the moment, I have some ideas ready to be published related to my recent <em>hacktivities</em>. After that, I will either let it die or write about whatever crosses my mind.</p>
-</div>]]></description><link>https://gtugablue.github.io/blog/2018/07/05/Hello-World.html</link><guid isPermaLink="true">https://gtugablue.github.io/blog/2018/07/05/Hello-World.html</guid><dc:creator><![CDATA[Gustavo Silva]]></dc:creator><pubDate>Thu, 05 Jul 2018 00:00:00 GMT</pubDate></item><item><title><![CDATA[How I accidentally hacked the e-learning platform of the University of Porto (MoodleUP)]]></title><description><![CDATA[<div class="sect1">
+</div>]]></description><link>https://gtugablue.github.io/blog/2018/07/05/Hello-World.html</link><guid isPermaLink="true">https://gtugablue.github.io/blog/2018/07/05/Hello-World.html</guid><dc:creator><![CDATA[Gustavo Silva]]></dc:creator><pubDate>Thu, 05 Jul 2018 00:00:00 GMT</pubDate></item><item><title><![CDATA[How I hacked the international application form of the Barcelona School of Informatics]]></title><description><![CDATA[<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>As part of the incoming admission procedure of my Erasmus destination institution, <a href="http://www.fib.upc.edu/">Barcelona School of Informatics</a>, an application form had to be filled with information about me and the courses I planned on attending.</p>
+</div>
+<div class="paragraph">
+<p>Therefore, there is a section of the form where students can choose from a drop-down list the courses they want to attend. When the "Add" button is pressed, an asynchronous request is sent to the server and the course gets added to the table.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://user-images.githubusercontent.com/3010353/27766229-64b076f2-5ec1-11e7-8824-17a3be3c1c69.png" alt="International application form">
+</div>
+<div class="title">Figure 1. International application form</div>
+</div>
+<div class="paragraph">
+<p>Unfortunately for me, I noticed one of my courses was not listed because it was not being offered for exchange students. So I replaced the HTML of the drop-down in order to include that specific course that was missing and was able to add it to my list of subjects, since there was no further server-side validation taking place. Obviously, I ended up deleting it, because I did not want someone to later tell me I could not enroll in that course.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_finding_the_vulnerability">Finding the vulnerability</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Eventually, I tested the system for <a href="https://www.owasp.org/index.php/SQL_Injection">SQL Injection</a> by adding an apostrophe to the initials of the subject name:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://user-images.githubusercontent.com/3010353/27766230-64b09bc8-5ec1-11e7-9ab1-4d930c6af9d6.png" alt="SQL Injection vulnerability test">
+</div>
+<div class="title">Figure 2. SQL Injection vulnerability test</div>
+</div>
+<div class="paragraph">
+<p>Indeed, the system was vulnerable to SQL Injection attacks. The server receives the list of courses selected and replies with the HTML code of the new drop-down, without the already selected courses. The client sends the list of currently selected courses as a string made of their initials separated by commas (e.g. <code>AGT,AM,AMMM</code>), but that string was not being properly escaped before being sent to the database.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_exploiting_the_vulnerability">Exploiting the vulnerability</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>I am not very experienced with this kind of attacks, but one way of performing them (after finding the vulnerability) is to use the <a href="https://www.w3schools.com/sql/sql_union.asp">UNION operator</a> to join the already existing SELECT statement with a new SELECT statement written by the exploiter. The challenge is to craft a statement that is similar to the original one, since it must contain the same amount of columns and with the same type.</p>
+</div>
+<div class="paragraph">
+<p>If the number of columns in my test string doesn&#8217;t match the number of columns in the original statement, the database will throw the following error:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>ORA-01789: query block has incorrect number of result columns.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Therefore, one way of finding the right amount of columns and their types is by trial and error (<a href="https://websec.ca/kb/sql_injection#MySQL_Tables_And_Columns">but there are faster methods</a>). Fortunately, in this specific case, the whole query was being output to the user, which meant that I could easily count the number of columns and find their types. The original query returned a total of 6 columns with types where the 1st and 4th were numbers and the rest were strings.</p>
+</div>
+<div class="paragraph">
+<p>Now that I had information about the original query, I proceeded with my attempt to do an SQL Injection attack taking advantage of the UNION operator. This was my input string:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>A' UNION
+    SELECT
+    a1.codi_assig,
+    a1.sigles,
+    a1.nom,
+    a1.credits,
+    a1.titulacio,
+    a2.quadri
+    FROM rriiassig--</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>My objective with this string was to replicate the original query, selecting the exact same columns, just to test if everything would work properly. The last two hyphens are used to start an inline comment, which means that the rest of the original query that follows them would be ignored. However, the database replied with the following error:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>ORA-00923 FROM keyword not found where expected</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After analyzing the query, I noticed that my string was being changed before being sent to the database:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>A' UNION
+    SELECT a1.codi_assig' AND sigles!='
+    a1.sigles' AND sigles!='
+    a1.nom' AND sigles!='
+    a1.credits' AND sigles!='
+    a1.titulacio' AND sigles!='
+    a2.quadri
+    FROM rriiassig--</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Wherever my input had a comma character, it would be replaced by the string <code>' AND sigles !='</code>. As mentioned above, the normal user input would be a list of subjects separated by commas, so the idea of replacing the commas by such string was to select only the subjects with <em>sigles</em> (initials) different to the ones in the input list. The result of this selection would then be the content of the new drop-down list, where the user could continue adding other courses.
+This meant that my string could not contain any commas, as these were being replaced by a different text.</p>
+</div>
+<div class="paragraph">
+<p><strong>But how to do a SQL SELECT query for 6 columns without using a comma to separate the different fields?</strong> This is possible by cross joining 6 different subqueries where each of those subqueries returns only one column, such as:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>A' UNION
+    SELECT * FROM (SELECT 1 FROM rriiassig)
+    CROSS JOIN (SELECT 'aaa' FROM rriiassig)
+    CROSS JOIN (SELECT 'bbb' FROM rriiassig)
+    CROSS JOIN (SELECT 4 FROM rriiassig)
+    CROSS JOIN (SELECT 'ccc' FROM rriiassig)
+    CROSS JOIN (SELECT 'Q1' FROM rriiassig) --</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>I ran this query and&#8230;&#8203; Oops, the server went down for a couple minutes due to the huge size of my query (cross joining 6 tables). I should have filtered my query by applying a LIMIT to one or more fields. That&#8217;s when I stopped my investigation and emailed the institution with information on the security exploit, so I still don&#8217;t know if the vulnerability gave me access to the database of the international page only or if that database was also used in different locations for different purposes. They answered the day after:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>[&#8230;&#8203;] We&#8217;ve reproduced the bug and looking at the source code, all the application form application uses parametrized SQL except the subject part! [&#8230;&#8203;]"</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; Jaume Moral Ros - Facultat d'Informàtica de Barcelona
+</div>
+</div>
+<div class="paragraph">
+<p>The issue was then fixed in less than a week.</p>
+</div>
+</div>
+</div>]]></description><link>https://gtugablue.github.io/blog/2017/07/11/How-I-hacked-the-international-application-form-of-the-Barcelona-School-of-Informatics.html</link><guid isPermaLink="true">https://gtugablue.github.io/blog/2017/07/11/How-I-hacked-the-international-application-form-of-the-Barcelona-School-of-Informatics.html</guid><category><![CDATA[Hack]]></category><category><![CDATA[FIB]]></category><category><![CDATA[SQL_Injection]]></category><dc:creator><![CDATA[Gustavo Silva]]></dc:creator><pubDate>Tue, 11 Jul 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[How I accidentally hacked the e-learning platform of the University of Porto (MoodleUP)]]></title><description><![CDATA[<div class="sect1">
 <h2 id="_moodleup">MoodleUP</h2>
 <div class="sectionbody">
 <div class="paragraph">
