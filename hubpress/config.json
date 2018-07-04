@@ -35,7 +35,7 @@
     "cover": "",
     "delay": "",
     "postsPerPage": "",
-    "blogPath": "blog/",
+    "blogPath": "''",
     "googleAnalytics": "",
     "disqus": ""
   },
