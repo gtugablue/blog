@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://gtugablue.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Wed, 04 Jul 2018 23:57:24 GMT</lastBuildDate><atom:link href="https://gtugablue.github.io/blog/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Hello World!]]></title><description><![CDATA[<div class="paragraph">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://gtugablue.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Wed, 04 Jul 2018 23:58:40 GMT</lastBuildDate><atom:link href="https://gtugablue.github.io/blog/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Hello World!]]></title><description><![CDATA[<div class="paragraph">
 <p>This is the first post of my new personal blog, where I will briefly present myself and the purpose of this blog.</p>
 </div>
 <div class="paragraph">
@@ -6,4 +6,124 @@
 </div>
 <div class="paragraph">
 <p>At the moment, I have some ideas ready to be published related to my recent <em>hacktivities</em>. After that, I will either let it die or write about whatever crosses my mind.</p>
-</div>]]></description><link>https://gtugablue.github.io/blog/2018/07/05/Hello-World.html</link><guid isPermaLink="true">https://gtugablue.github.io/blog/2018/07/05/Hello-World.html</guid><dc:creator><![CDATA[Gustavo Silva]]></dc:creator><pubDate>Thu, 05 Jul 2018 00:00:00 GMT</pubDate></item></channel></rss>
+</div>]]></description><link>https://gtugablue.github.io/blog/2018/07/05/Hello-World.html</link><guid isPermaLink="true">https://gtugablue.github.io/blog/2018/07/05/Hello-World.html</guid><dc:creator><![CDATA[Gustavo Silva]]></dc:creator><pubDate>Thu, 05 Jul 2018 00:00:00 GMT</pubDate></item><item><title><![CDATA[How I accidentally hacked the e-learning platform of the University of Porto (MoodleUP)]]></title><description><![CDATA[<div class="sect1">
+<h2 id="_moodleup">MoodleUP</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Moodle is a learning platform designed to provide educators, administrators and learners with a single robust, secure and integrated system to create personalised learning environments.</p>
+</div>
+<div class="paragraph">
+<p>Moodle is widely used in the University of Porto and one of its main uses envolves carrying out digital exams to evaluate the knowledge of students.</p>
+</div>
+<div class="sect2">
+<h3 id="_moodlewatcher">MoodleWatcher</h3>
+<div class="paragraph">
+<p>In order to avoid cheating in exams, a tool named MoodleWatcher was developed. According to the authors:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>MoodleWatcher consists of a front-end web application that shares code with Moodle in relation to the use of database access. [&#8230;&#8203;]</p>
+</div>
+<div class="paragraph">
+<p>The main purpose of the tool is to provide a simple and efficient monitoring method to be used by teachers in order to assure them of the integrity of the tests and exams carried out using Moodle.</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; MATOS, Rodolfo; TORRÃO, Sofia; VIEIRA, Tito Carlos S. Moodlewatcher: detection and prevention of fraud when using Moodle quizzes. In: Proceedings of INTED2012 Conference. 2012.
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://sigarra.up.pt/reitoria/pt/pub_geral.show_file?pi_gdoc_id=336206">There is a whole paper explaining the MoodleWatcher tool</a>, so I won&#8217;t be listing here all the features of the system.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_story">The story</h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><strong>Procrastinate:</strong> Delay or postpone action; put off doing something.</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; Oxford Dictionary
+</div>
+</div>
+<div class="paragraph">
+<p>During a study-procrastinate session, I remembered a previously taken Moodle exam where one of the vigilant professors announced something like "Do not cheat during the exam, your actions are being monitored".</p>
+</div>
+<div class="paragraph">
+<p>This made me slightly curious. Was the professor really speaking the truth? Does Moodle have a feature for monitoring students' actions during quizzes? After a bit of research I found the page of MoodleWatcher. And by searching the system for some time I realized that the professor was indeed telling the true, most of the actions were being monitored.</p>
+</div>
+<div class="paragraph">
+<p>MoodleWatcher generates a report for each quiz, listing all unallowed and possibly dangerous actions made by students.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://user-images.githubusercontent.com/3010353/27737877-ad470b04-5da1-11e7-9e8f-d93c4e9e0852.png" alt="MoodleWatcher dashboard">
+</div>
+<div class="title">Figure 1. MoodleWatcher dashboard</div>
+</div>
+<div class="paragraph">
+<p>During my procrastination, I tried exploiting the system with a basic <a href="https://en.wikipedia.org/wiki/SQL_injection">SQL injection attack</a> on the quiz ID, but the system was protected against such attacks. So I started trying random quiz IDs to see exactly what kind of actions were being tracked. While doing this, I noticed that some of the pages were throwing some strange errors from the Moodle platform and the whole error page from Moodle was being displayed. I am sorry, but I did not capture a screenshot for this.</p>
+</div>
+<div class="paragraph">
+<p>Eventually I gave up on hacking MoodleWatcher and went back to Moodle, ready to restart my studying session. That&#8217;s when I noticed something strange: instead of being logged in my normal account, I was logged in as a user named with a single dot (".").</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://user-images.githubusercontent.com/3010353/27738721-1ad46ba6-5da4-11e7-8a87-c0225547298d.jpg" alt="Logged in as the dot user">
+</div>
+<div class="title">Figure 2. Logged in as the dot user</div>
+</div>
+<div class="paragraph">
+<p>I pressed the "Save changes" button in the Edit Profile page, without changing any settings, and got taken to my profile page:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://user-images.githubusercontent.com/3010353/27737879-ad4e9572-5da1-11e7-80ed-163c37765808.jpg" alt="Own profile">
+</div>
+<div class="title">Figure 3. Viewing own profile page</div>
+</div>
+<div class="paragraph">
+<p>All of a sudden I was no longer myself nor the dot user, I was the <strong>Admin User</strong>. And this meant that I had full access to MoodleUP, including the possibility of managing accounts, viewing hidden quizzes, downloading a full backup, changing grades, etc.</p>
+</div>
+<div class="sect2">
+<h3 id="_the_vulnerability">The vulnerability</h3>
+<div class="paragraph">
+<p>So what exactly allowed me to gain administrator access to MoodleUP? And what does MoodleWatcher have to do with it?
+In fact, there was an interesting security vulnerability in MoodleWatcher that allowed anyone to accidentally perform a <a href="https://en.wikipedia.org/wiki/Session_hijacking">session hijacking attack</a>.
+When something went wrong while displaying the report, the whole Moodle error page was being shown to the user. Unfortunately, I did not capture a screenshot for this, so I fired up Photoshop and tried to recreate it from memory:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://user-images.githubusercontent.com/3010353/27739951-42fac4dc-5da8-11e7-995b-c3f4cee33e20.jpg" alt="Error output example">
+</div>
+<div class="title">Figure 4. Error output example</div>
+</div>
+<div class="paragraph">
+<p>Clearly, the dot user was the account used by the system to fetch all information from Moodle. Then, in case of error, the whole error page was being redirected to the user.</p>
+</div>
+<div class="paragraph">
+<p>Despite not being the safest and most beautiful solution, it did work well as a way of outputting errors, which in the end is what matters. The problem was that the body of the HTTP request was not the only data being redirected to the user. <strong>The HTTP headers were being redirected too! And this includes the <em>Set-Cookie</em> header with the session token.</strong> That&#8217;s the reason why after going back to MoodleUP I was logged in as the dot user.</p>
+</div>
+<div class="paragraph">
+<p>But why did pressing the "Save" button on the Edit Profile page convert me from the dot user to the Admin User of Moodle? I&#8217;m not sure, but I believe they actually are the same account. For some reason, the user name seems to change depending on the active language: "." in Portuguese and "Admin User" in English.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_aftermath">Aftermath</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The issue was reported to the developers behind MoodleWatcher and got solved in a couple days. The fix was simple: redirect only the HTTP body instead of sending also the headers.</p>
+</div>
+<div class="paragraph">
+<p>Eventually, another layer of protection was added by implementing HTTP Basic Authentication to the whole MoodleWatcher platform.</p>
+</div>
+</div>
+</div>]]></description><link>https://gtugablue.github.io/blog/2017/06/30/How-I-accidentally-hacked-the-e-learning-platform-of-the-University-of-Porto-MoodleUP.html</link><guid isPermaLink="true">https://gtugablue.github.io/blog/2017/06/30/How-I-accidentally-hacked-the-e-learning-platform-of-the-University-of-Porto-MoodleUP.html</guid><category><![CDATA[Hack]]></category><category><![CDATA[Moodle]]></category><category><![CDATA[UP]]></category><category><![CDATA[MoodleUP]]></category><category><![CDATA[MoodleWatcher]]></category><dc:creator><![CDATA[Gustavo Silva]]></dc:creator><pubDate>Fri, 30 Jun 2017 00:00:00 GMT</pubDate></item></channel></rss>
