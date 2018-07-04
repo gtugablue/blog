@@ -5,6 +5,26 @@
     "branch": "gh-pages"
   },
   "theme": {
-    "name": "Casper"
+    "name": "casper"
+  },
+  "urls": {
+    "site": "https://gtugablue.github.io/blog",
+    "hubpress": "https://gtugablue.github.io/blog",
+    "theme": "//gtugablue.github.io/blog/themes/casper",
+    "images": "https://gtugablue.github.io/blog/images"
+  },
+  "initialisationConfigComponent": {
+    "name": "initialise-configuration",
+    "computed": {},
+    "methods": {},
+    "staticRenderFns": [
+      null,
+      null,
+      null
+    ],
+    "_compiled": true,
+    "beforeCreate": [
+      null
+    ]
   }
 }
