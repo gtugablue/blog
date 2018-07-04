@@ -1,1 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://gtugablue.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Wed, 04 Jul 2018 23:56:34 GMT</lastBuildDate><atom:link href="https://gtugablue.github.io/blog/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl></channel></rss>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://gtugablue.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Wed, 04 Jul 2018 23:57:24 GMT</lastBuildDate><atom:link href="https://gtugablue.github.io/blog/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Hello World!]]></title><description><![CDATA[<div class="paragraph">
+<p>This is the first post of my new personal blog, where I will briefly present myself and the purpose of this blog.</p>
+</div>
+<div class="paragraph">
+<p>I am a Portuguese student currently taking the Master in Informatics and Computer Engineering at the Faculty of Engineering of the University of Porto. You can find more information about me and what I do here: <a href="http://gustavosilva.me">gustavosilva.me</a></p>
+</div>
+<div class="paragraph">
+<p>At the moment, I have some ideas ready to be published related to my recent <em>hacktivities</em>. After that, I will either let it die or write about whatever crosses my mind.</p>
+</div>]]></description><link>https://gtugablue.github.io/blog/2018/07/05/Hello-World.html</link><guid isPermaLink="true">https://gtugablue.github.io/blog/2018/07/05/Hello-World.html</guid><dc:creator><![CDATA[Gustavo Silva]]></dc:creator><pubDate>Thu, 05 Jul 2018 00:00:00 GMT</pubDate></item></channel></rss>
