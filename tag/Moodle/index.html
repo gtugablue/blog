@@ -50,8 +50,8 @@
     <link href="//fonts.googleapis.com/" rel="dns-prefetch">
     <link href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400&subset=latin,latin-ext" rel="stylesheet">
 
-    <link rel="stylesheet" href="//gtugablue.github.io/blog/themes/ghostium/assets/css/main.min.css?v=1530821845389">
-    <link rel="stylesheet" href="//gtugablue.github.io/blog/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1530821845389"/>
+    <link rel="stylesheet" href="//gtugablue.github.io/blog/themes/ghostium/assets/css/main.min.css?v=1530822583563">
+    <link rel="stylesheet" href="//gtugablue.github.io/blog/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1530822583563"/>
 
     <script type="text/javascript">
       var ga_ua = 'UA-XXXXX-X';
@@ -78,7 +78,7 @@
       GHOSTIUM.enablePjax = typeof enable_pjax !== 'undefined' ? enable_pjax : true;
     </script>
 
-    <script src="//gtugablue.github.io/blog/themes/ghostium/assets/js/head-scripts.min.js?v=1530821845389"></script>
+    <script src="//gtugablue.github.io/blog/themes/ghostium/assets/js/head-scripts.min.js?v=1530822583563"></script>
 
     <link rel="canonical" href="https://gtugablue.github.io/blog/https://gtugablue.github.io/blog/tag/Moodle/" />
     <meta name="referrer" content="origin" />
@@ -208,6 +208,24 @@
       </div>
     </main>
 
+    <script>
+        (function () {
+            var anchors = document.querySelectorAll('a');
+            for (var i = 0, l = anchors.length; i < l; i++) {
+                anchors[i].href = anchors[i].href.replace('gtugablue.github.io', 'gustavosilva.me')
+            }
+            var scripts = document.querySelectorAll('script');
+            for (var i = 0, l = scripts.length; i < l; i++) {
+                scripts[i].src = scripts[i].src.replace('gtugablue.github.io', 'gustavosilva.me')
+            }
+            var links = document.querySelectorAll('link');
+            for (var i = 0, l = links.length; i < l; i++) {
+                if (links[i].rel != 'stylesheet')
+                    continue
+                links[i].href = links[i].href.replace('gtugablue.github.io', 'gustavosilva.me')
+            }
+        }());
+    </script>
 
     <script
         src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -227,7 +245,7 @@
         // hljs.initHighlightingOnLoad();
       </script>
 
-    <script src="//gtugablue.github.io/blog/themes/ghostium/assets/js/foot-scripts.min.js?v=1530821845389"></script>
+    <script src="//gtugablue.github.io/blog/themes/ghostium/assets/js/foot-scripts.min.js?v=1530822583563"></script>
 
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
