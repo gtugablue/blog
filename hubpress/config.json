@@ -9,9 +9,9 @@
     "name": "casper"
   },
   "urls": {
-    "site": "https://gustavosilva.me/blog",
+    "site": "https://gtugablue.github.io/blog",
     "hubpress": "https://gustavosilva.me/blog",
-    "theme": "//gustavosilva.me/blog/themes/casper",
+    "theme": "//gtugablue.github.io/blog/themes/casper",
     "images": "https://gtugablue.github.io/blog/images"
   },
   "initialisationConfigComponent": {
