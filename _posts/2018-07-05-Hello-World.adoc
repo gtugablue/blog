@@ -1,6 +1,6 @@
 = Hello World!
 
-// :hp-image: /covers/cover.png
+:hp-image: /covers/cover.png
 :published_at: 2017-06-29
 :hp-tags: Blog, Hello_World, Hello,
 
