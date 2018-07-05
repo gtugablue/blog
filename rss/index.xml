@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[My personal blog.]]></description><link>https://gtugablue.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Thu, 05 Jul 2018 22:17:23 GMT</lastBuildDate><atom:link href="https://gtugablue.github.io/blog/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[How I hacked the international application form of the Barcelona School of Informatics]]></title><description><![CDATA[<div id="preamble">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[My personal blog.]]></description><link>https://gtugablue.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Thu, 05 Jul 2018 22:19:49 GMT</lastBuildDate><atom:link href="https://gtugablue.github.io/blog/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[How I hacked the international application form of the Barcelona School of Informatics]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>As part of the incoming admission procedure of my Erasmus destination institution, <a href="http://www.fib.upc.edu/">Barcelona School of Informatics</a>, an application form had to be filled with information about me and the courses I planned on attending.</p>
@@ -131,7 +131,7 @@ I didn&#8217;t capture a screenshot so I recreated the page in Photoshop:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="https://user-images.githubusercontent.com/3010353/27763930-21e2bcd6-5e85-11e7-9dcc-24b1acba656f.png" alt="Homepage">
+<img src="https://user-images.githubusercontent.com/3010353/42350758-be761614-80a9-11e8-901c-5e379a5d8e39.png" alt="Homepage">
 </div>
 <div class="title">Figure 1. Homepage</div>
 </div>
@@ -143,7 +143,7 @@ I didn&#8217;t capture a screenshot so I recreated the page in Photoshop:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="https://user-images.githubusercontent.com/3010353/27763875-20fd5b06-5e84-11e7-94c5-23dd2a367abf.png" alt="Request list">
+<img src="https://user-images.githubusercontent.com/3010353/42350574-00b2783e-80a9-11e8-82a1-94794205a59f.png" alt="Request list">
 </div>
 <div class="title">Figure 2. Request list</div>
 </div>
@@ -164,7 +164,7 @@ I didn&#8217;t capture a screenshot so I recreated the page in Photoshop:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="https://user-images.githubusercontent.com/3010353/27763718-f676d36a-5e80-11e7-92df-0266c105e7a9.png" alt="Editing an entry in the backoffice">
+<img src="https://user-images.githubusercontent.com/3010353/42350573-00843f64-80a9-11e8-9b70-a8b23d565e33.png" alt="Editing an entry in the backoffice">
 </div>
 <div class="title">Figure 3. Editing an entry in the backoffice</div>
 </div>
