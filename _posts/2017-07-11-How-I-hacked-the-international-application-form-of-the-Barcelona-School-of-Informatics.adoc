@@ -1,7 +1,7 @@
 = How I hacked the international application form of the Barcelona School of Informatics
 :hp-image: https://user-images.githubusercontent.com/3010353/27766233-786715f2-5ec1-11e7-8725-79d14de0ce81.png
 :published_at: 2017-07-11
-:hp-tags: Hack, FIB, SQL_Injection
+:hp-tags: Hack, FIB, SQL_Injection,
 
 As part of the incoming admission procedure of my Erasmus destination institution, http://www.fib.upc.edu/[Barcelona School of Informatics], an application form had to be filled with information about me and the courses I planned on attending.
 
