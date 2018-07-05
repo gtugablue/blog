@@ -9,10 +9,10 @@
     "name": "casper"
   },
   "urls": {
-    "site": "https://gustavosilva.me/blog",
-    "hubpress": "https://gustavosilva.me/blog",
-    "theme": "https://gustavosilva.me/blog/themes/casper",
-    "images": "https://gustavosilva.me/blog/images"
+    "site": "http://gustavosilva.me",
+    "hubpress": "https://gustavosilva.me",
+    "theme": "//gustavosilva.me/themes/casper",
+    "images": "http://gustavosilva.me/images"
   },
   "initialisationConfigComponent": {
     "name": "initialise-configuration",
