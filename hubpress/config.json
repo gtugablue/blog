@@ -29,14 +29,14 @@
     ]
   },
   "site": {
-    "title": "",
-    "description": "",
+    "title": "Blog | Gustavo Silva",
+    "description": "My personal blog.",
     "logo": "",
     "cover": "",
     "delay": "",
     "postsPerPage": "",
     "blogPath": "",
-    "googleAnalytics": "",
+    "googleAnalytics": "UA-70940481-1",
     "disqus": ""
   },
   "socialnetwork": {
