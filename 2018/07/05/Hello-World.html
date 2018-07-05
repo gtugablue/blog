@@ -9,7 +9,7 @@
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" type="text/css" href="//gtugablue.github.io/blog/themes/casper/assets/built/screen.css?v=1530819604295" />
+    <link rel="stylesheet" type="text/css" href="//gtugablue.github.io/blog/themes/casper/assets/built/screen.css?v=1530819986141" />
 
     <link rel="canonical" href="https://gtugablue.github.io/blog/2018/07/05/Hello-World.html" />
     <meta name="referrer" content="origin" />
@@ -192,6 +192,16 @@
             for (var i = 0, l = anchors.length; i < l; i++) {
                 anchors[i].href = anchors[i].href.replace('gtugablue.github.io', 'gustavosilva.me')
             }
+            var scripts = document.querySelectorAll('script');
+            for (var i = 0, l = scripts.length; i < l; i++) {
+                scripts[i].src = scripts[i].src.replace('gtugablue.github.io', 'gustavosilva.me')
+            }
+            var links = document.querySelectorAll('link');
+            for (var i = 0, l = links.length; i < l; i++) {
+                if (links[i].rel != 'stylesheet')
+                    continue
+                links[i].href = links[i].href.replace('gtugablue.github.io', 'gustavosilva.me')
+            }
         }());
     </script>
 
@@ -200,7 +210,7 @@
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous">
     </script>
-    <script type="text/javascript" src="//gtugablue.github.io/blog/themes/casper/assets/js/jquery.fitvids.js?v=1530819604295"></script>
+    <script type="text/javascript" src="//gtugablue.github.io/blog/themes/casper/assets/js/jquery.fitvids.js?v=1530819986141"></script>
 
 
     <script>
