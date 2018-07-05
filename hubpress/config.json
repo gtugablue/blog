@@ -11,7 +11,7 @@
   "urls": {
     "site": "http://gustavosilva.me",
     "hubpress": "https://gustavosilva.me",
-    "theme": "//gustavosilva.me/themes/casper",
+    "theme": "https://gustavosilva.me/themes/casper",
     "images": "http://gustavosilva.me/images"
   },
   "initialisationConfigComponent": {
