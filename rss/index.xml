@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://gtugablue.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Wed, 04 Jul 2018 23:59:01 GMT</lastBuildDate><atom:link href="https://gtugablue.github.io/blog/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Hello World!]]></title><description><![CDATA[<div class="paragraph">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://gtugablue.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Thu, 05 Jul 2018 00:06:19 GMT</lastBuildDate><atom:link href="https://gtugablue.github.io/blog/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Hello World!]]></title><description><![CDATA[<div class="paragraph">
 <p>This is the first post of my new personal blog, where I will briefly present myself and the purpose of this blog.</p>
 </div>
 <div class="paragraph">
@@ -133,7 +133,52 @@ This meant that my string could not contain any commas, as these were being repl
 <p>The issue was then fixed in less than a week.</p>
 </div>
 </div>
-</div>]]></description><link>https://gtugablue.github.io/blog/2017/07/11/How-I-hacked-the-international-application-form-of-the-Barcelona-School-of-Informatics.html</link><guid isPermaLink="true">https://gtugablue.github.io/blog/2017/07/11/How-I-hacked-the-international-application-form-of-the-Barcelona-School-of-Informatics.html</guid><category><![CDATA[Hack]]></category><category><![CDATA[FIB]]></category><category><![CDATA[SQL_Injection]]></category><dc:creator><![CDATA[Gustavo Silva]]></dc:creator><pubDate>Tue, 11 Jul 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[How I accidentally hacked the e-learning platform of the University of Porto (MoodleUP)]]></title><description><![CDATA[<div class="sect1">
+</div>]]></description><link>https://gtugablue.github.io/blog/2017/07/11/How-I-hacked-the-international-application-form-of-the-Barcelona-School-of-Informatics.html</link><guid isPermaLink="true">https://gtugablue.github.io/blog/2017/07/11/How-I-hacked-the-international-application-form-of-the-Barcelona-School-of-Informatics.html</guid><category><![CDATA[Hack]]></category><category><![CDATA[FIB]]></category><category><![CDATA[SQL_Injection]]></category><dc:creator><![CDATA[Gustavo Silva]]></dc:creator><pubDate>Tue, 11 Jul 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[How I hacked the website of CDUP, the Sports Center of the University of Porto]]></title><description><![CDATA[<div class="paragraph">
+<p>While checking the gym prices at CDUP, my friend <a href="http://diogomoura.me">Diogo Moura</a> noticed something unusual: a small square on the bottom-left corner that when clicked would display a bar sticking to the bottom of the screen.
+I didn&#8217;t capture a screenshot so I recreated the page in Photoshop:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://user-images.githubusercontent.com/3010353/27763930-21e2bcd6-5e85-11e7-9dcc-24b1acba656f.png" alt="Homepage">
+</div>
+<div class="title">Figure 1. Homepage</div>
+</div>
+<div class="paragraph">
+<p>Diogo is a good guy so he stopped there.</p>
+</div>
+<div class="paragraph">
+<p>I started investigating that bar and noticed it was the <a href="http://phpdebugbar.com/">PHP Debug Bar</a>, useful for debugging purposes during development. It contains some tabs with multiple information about everything that happens in the website. One of the features it provides is a list of the latest HTTP requests made by every user on the website:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://user-images.githubusercontent.com/3010353/27763875-20fd5b06-5e84-11e7-94c5-23dd2a367abf.png" alt="Request list">
+</div>
+<div class="title">Figure 2. Request list</div>
+</div>
+<div class="paragraph">
+<p>Obviously, this is a big security issue, since I could trace the actions in the website of whoever I wanted. Some of the entries in that list had the text "/login" in the URL field and "POST" in the method field, meaning that they were related to submissions of the administrator login form. By clicking that entry I was able to see all details of that specific request, including the username and the plaintext password that were sent in the body of the request:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>{
+   "_token":"YVOzlSSYcaEEkPF24AVNke2KsdvEUZedIwNtHyJo",
+   "username":"Admin",
+   "password":"XXXXXXXXXXXXXXXX"
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So I went to the <a href="http://cdup.up.pt/admin">administrator login form</a> and successfully logged in with the credentials I had just stolen. Now I had access to the backoffice of the whole website and I could manage users, edit content, etc.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://user-images.githubusercontent.com/3010353/27763718-f676d36a-5e80-11e7-92df-0266c105e7a9.png" alt="Editing an entry in the backoffice">
+</div>
+<div class="title">Figure 3. Editing an entry in the backoffice</div>
+</div>
+<div class="paragraph">
+<p>The issue was reported to CDUP and was fixed quickly by removing the PHP Debug Bar.</p>
+</div>]]></description><link>https://gtugablue.github.io/blog/2017/07/03/How-I-hacked-the-website-of-CDUP-the-Sports-Center-of-the-University-of-Porto.html</link><guid isPermaLink="true">https://gtugablue.github.io/blog/2017/07/03/How-I-hacked-the-website-of-CDUP-the-Sports-Center-of-the-University-of-Porto.html</guid><category><![CDATA[Hack]]></category><category><![CDATA[CDUP]]></category><dc:creator><![CDATA[Gustavo Silva]]></dc:creator><pubDate>Mon, 03 Jul 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[How I accidentally hacked the e-learning platform of the University of Porto (MoodleUP)]]></title><description><![CDATA[<div class="sect1">
 <h2 id="_moodleup">MoodleUP</h2>
 <div class="sectionbody">
 <div class="paragraph">
