@@ -3,16 +3,16 @@
     "username": "gtugablue",
     "repositoryName": "blog",
     "branch": "gh-pages",
-    "cname": "gustavosilva.me"
+    "cname": ""
   },
   "theme": {
     "name": "casper"
   },
   "urls": {
-    "site": "http://gustavosilva.me",
-    "hubpress": "https://gustavosilva.me",
-    "theme": "//gustavosilva.me/themes/casper",
-    "images": "http://gustavosilva.me/images"
+    "site": "http://gustavosilva.me/blog",
+    "hubpress": "https://gustavosilva.me/blog",
+    "theme": "//gustavosilva.me/blog/themes/casper",
+    "images": "http://gustavosilva.me/blog/images"
   },
   "initialisationConfigComponent": {
     "name": "initialise-configuration",
