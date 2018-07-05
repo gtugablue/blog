@@ -11,7 +11,7 @@
   "urls": {
     "site": "https://gtugablue.github.io/blog",
     "hubpress": "https://gtugablue.github.io/blog",
-    "theme": "//gtugablue.github.io/blog/themes/casper",
+    "theme": "https://gtugablue.github.io/blog/themes/casper",
     "images": "https://gtugablue.github.io/blog/images"
   },
   "initialisationConfigComponent": {
