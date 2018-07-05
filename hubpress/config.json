@@ -11,7 +11,7 @@
   "urls": {
     "site": "https://gtugablue.github.io/blog",
     "hubpress": "https://gustavosilva.me/blog",
-    "theme": "//gtugablue.github.io/blog/themes/casper",
+    "theme": "//gtugablue.github.io/blog/themes/ghostium",
     "images": "https://gtugablue.github.io/blog/images"
   },
   "initialisationConfigComponent": {
@@ -29,7 +29,7 @@
     ]
   },
   "site": {
-    "title": "Blog | Gustavo Silva",
+    "title": "",
     "description": "My personal blog.",
     "logo": "",
     "cover": "",
