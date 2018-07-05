@@ -57,6 +57,15 @@
         </div>
     </div>
     {{/if}}
+    
+    <script>
+        (function () {
+            var anchors = document.querySelectorAll('a');
+            for (var i = 0, l = anchors.length; i < l; i++) {
+                anchors[i].href = anchors[i].href.replace('gtugablue.github.io', 'gustavosilva.me')
+            }
+        }());
+    </script>
 
     {{!-- jQuery + Fitvids, which makes all video embeds responsive --}}
     <script
