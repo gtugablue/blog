@@ -1,4 +1,4 @@
-= Hello World!
+= Hello World!2
 
 // :hp-image: /covers/cover.png
 :published_at: 2017-06-29
