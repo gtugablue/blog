@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[My personal blog.]]></description><link>https://gtugablue.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Thu, 05 Jul 2018 21:58:43 GMT</lastBuildDate><atom:link href="https://gtugablue.github.io/blog/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[How I hacked the international application form of the Barcelona School of Informatics]]></title><description><![CDATA[<div id="preamble">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[My personal blog.]]></description><link>https://gtugablue.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Thu, 05 Jul 2018 22:17:23 GMT</lastBuildDate><atom:link href="https://gtugablue.github.io/blog/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[How I hacked the international application form of the Barcelona School of Informatics]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>As part of the incoming admission procedure of my Erasmus destination institution, <a href="http://www.fib.upc.edu/">Barcelona School of Informatics</a>, an application form had to be filled with information about me and the courses I planned on attending.</p>
@@ -227,7 +227,7 @@ I didn&#8217;t capture a screenshot so I recreated the page in Photoshop:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="https://user-images.githubusercontent.com/3010353/27737877-ad470b04-5da1-11e7-9e8f-d93c4e9e0852.png" alt="MoodleWatcher dashboard">
+<img src="https://user-images.githubusercontent.com/3010353/42350533-e0ef8474-80a8-11e8-818c-1645355e2550.png" alt="MoodleWatcher dashboard">
 </div>
 <div class="title">Figure 1. MoodleWatcher dashboard</div>
 </div>
@@ -239,7 +239,7 @@ I didn&#8217;t capture a screenshot so I recreated the page in Photoshop:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="https://user-images.githubusercontent.com/3010353/27738721-1ad46ba6-5da4-11e7-8a87-c0225547298d.jpg" alt="Logged in as the dot user">
+<img src="https://user-images.githubusercontent.com/3010353/42350536-e144e36a-80a8-11e8-96f7-8f58e82fdb80.jpg" alt="Logged in as the dot user">
 </div>
 <div class="title">Figure 2. Logged in as the dot user</div>
 </div>
@@ -248,7 +248,7 @@ I didn&#8217;t capture a screenshot so I recreated the page in Photoshop:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="https://user-images.githubusercontent.com/3010353/27737879-ad4e9572-5da1-11e7-80ed-163c37765808.jpg" alt="Own profile">
+<img src="https://user-images.githubusercontent.com/3010353/42350534-e119adb2-80a8-11e8-8456-96cadccc0a81.jpg" alt="Own profile">
 </div>
 <div class="title">Figure 3. Viewing own profile page</div>
 </div>
@@ -264,7 +264,7 @@ When something went wrong while displaying the report, the whole Moodle error pa
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="https://user-images.githubusercontent.com/3010353/27739951-42fac4dc-5da8-11e7-995b-c3f4cee33e20.jpg" alt="Error output example">
+<img src="https://user-images.githubusercontent.com/3010353/42350537-e17026e2-80a8-11e8-8f81-6157c1e27639.jpg" alt="Error output example">
 </div>
 <div class="title">Figure 4. Error output example</div>
 </div>
