@@ -1,5 +1,5 @@
 = How I hacked the international application form of the Barcelona School of Informatics
-:hp-image: https://user-images.githubusercontent.com/3010353/27766233-786715f2-5ec1-11e7-8725-79d14de0ce81.png
+:hp-image: https://user-images.githubusercontent.com/3010353/42350813-fa70864a-80a9-11e8-9299-446b256dbc86.png
 :published_at: 2017-07-11
 :hp-tags: Hack, FIB, SQL_Injection
 
@@ -8,7 +8,7 @@ As part of the incoming admission procedure of my Erasmus destination institutio
 Therefore, there is a section of the form where students can choose from a drop-down list the courses they want to attend. When the "Add" button is pressed, an asynchronous request is sent to the server and the course gets added to the table.
 
 .International application form
-image::https://user-images.githubusercontent.com/3010353/27766229-64b076f2-5ec1-11e7-8824-17a3be3c1c69.png[International application form]
+image::https://user-images.githubusercontent.com/3010353/42350581-1181f43c-80a9-11e8-86ab-7817de0ff969.png[International application form]
 
 Unfortunately for me, I noticed one of my courses was not listed because it was not being offered for exchange students. So I replaced the HTML of the drop-down in order to include that specific course that was missing and was able to add it to my list of subjects, since there was no further server-side validation taking place. Obviously, I ended up deleting it, because I did not want someone to later tell me I could not enroll in that course.
 
@@ -17,7 +17,7 @@ Unfortunately for me, I noticed one of my courses was not listed because it was 
 Eventually, I tested the system for https://www.owasp.org/index.php/SQL_Injection[SQL Injection] by adding an apostrophe to the initials of the subject name:
 
 .SQL Injection vulnerability test
-image::https://user-images.githubusercontent.com/3010353/27766230-64b09bc8-5ec1-11e7-9ab1-4d930c6af9d6.png[SQL Injection vulnerability test]
+image::https://user-images.githubusercontent.com/3010353/42350582-11b3b666-80a9-11e8-9bf1-95e3ea301625.png[SQL Injection vulnerability test]
 
 Indeed, the system was vulnerable to SQL Injection attacks. The server receives the list of courses selected and replies with the HTML code of the new drop-down, without the already selected courses. The client sends the list of currently selected courses as a string made of their initials separated by commas (e.g. ``AGT,AM,AMMM``), but that string was not being properly escaped before being sent to the database.
 
