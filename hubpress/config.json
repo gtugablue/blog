@@ -6,12 +6,12 @@
     "cname": ""
   },
   "theme": {
-    "name": "the-shell"
+    "name": "uno-zen"
   },
   "urls": {
     "site": "https://gtugablue.github.io/blog",
     "hubpress": "https://gustavosilva.me/blog",
-    "theme": "//gtugablue.github.io/blog/themes/roon",
+    "theme": "//gtugablue.github.io/blog/themes/the-shell",
     "images": "https://gtugablue.github.io/blog/images"
   },
   "initialisationConfigComponent": {
