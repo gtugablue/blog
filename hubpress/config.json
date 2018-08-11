@@ -6,12 +6,12 @@
     "cname": ""
   },
   "theme": {
-    "name": "uno"
+    "name": "casper"
   },
   "urls": {
     "site": "https://gtugablue.github.io/blog",
     "hubpress": "https://gustavosilva.me/blog",
-    "theme": "//gtugablue.github.io/blog/themes/uno-zen",
+    "theme": "//gtugablue.github.io/blog/themes/uno",
     "images": "https://gtugablue.github.io/blog/images"
   },
   "initialisationConfigComponent": {
