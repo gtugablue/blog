@@ -6,12 +6,12 @@
     "cname": ""
   },
   "theme": {
-    "name": "casper"
+    "name": "ichi"
   },
   "urls": {
     "site": "https://gtugablue.github.io/blog",
     "hubpress": "https://gustavosilva.me/blog",
-    "theme": "//gtugablue.github.io/blog/themes/ghostium",
+    "theme": "//gtugablue.github.io/blog/themes/casper",
     "images": "https://gtugablue.github.io/blog/images"
   },
   "initialisationConfigComponent": {
