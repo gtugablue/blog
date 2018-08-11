@@ -6,12 +6,12 @@
     "cname": ""
   },
   "theme": {
-    "name": "roon"
+    "name": "the-shell"
   },
   "urls": {
     "site": "https://gtugablue.github.io/blog",
     "hubpress": "https://gustavosilva.me/blog",
-    "theme": "//gtugablue.github.io/blog/themes/ichi",
+    "theme": "//gtugablue.github.io/blog/themes/roon",
     "images": "https://gtugablue.github.io/blog/images"
   },
   "initialisationConfigComponent": {
