@@ -11,7 +11,7 @@
   "urls": {
     "site": "https://gtugablue.github.io/blog",
     "hubpress": "https://gustavosilva.me/blog",
-    "theme": "//gtugablue.github.io/blog/themes/uno",
+    "theme": "//gtugablue.github.io/blog/themes/ghostium",
     "images": "https://gtugablue.github.io/blog/images"
   },
   "initialisationConfigComponent": {
@@ -43,7 +43,7 @@
     "email": "silva95gustavo@gmail.com",
     "github": "gtugablue",
     "twitter": "",
-    "facebook": "",
+    "facebook": "https://www.facebook.com/gtugablue",
     "googleplus": "",
     "instagram": "",
     "pinterest": "",
