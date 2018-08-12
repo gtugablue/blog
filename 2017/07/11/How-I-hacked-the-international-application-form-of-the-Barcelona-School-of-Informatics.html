@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <title>How I hacked the international application form of the Barcelona School of Informatics - </title>
+    <title>How I hacked the international application form of the Barcelona School of Informatics</title>
 
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -18,14 +19,66 @@
     <meta name="twitter:title" content="How I hacked the international application form of the Barcelona School of Informatics">
     <meta name="twitter:description" content="">
 
+    <meta property="og:url" content="https://gtugablue.github.io/blog">
     <meta property="og:type" content="article">
     <meta property="og:title" content="How I hacked the international application form of the Barcelona School of Informatics">
     <meta property="og:description" content="">
+    <meta property="og:site_name" content="">
+
+    <meta itemprop="name" content="How I hacked the international application form of the Barcelona School of Informatics">
+    <meta itemprop="description" content="">
+
+    <meta name="twitter:site" content="@yourblogtwitter">
+    
+    <meta name="twitter:creator" content="@yourtwitter">
+    
+    <meta property="article:author" content="https://www.facebook.com/yourprofile">
+    
+    <meta property="article:publisher" content="https://www.facebook.com/yourblogprofile">
+    
+    <meta property="fb:admins" content="">
+    
+    <meta name="google-site-verification" content="">
+    
+    <link rel="author" href="https://plus.google.com/yourprofile">
+    
+    <meta name="theme-color" content="">
 
     <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
     <link href="/apple-touch-icon-precomposed.png" rel="apple-touch-icon">
 
-    <link rel="stylesheet" type="text/css" href="//gtugablue.github.io/blog/themes/uno/assets/css/uno.css?v=1534085764285" />
+    <link href="//fonts.googleapis.com/" rel="dns-prefetch">
+    <link href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400&subset=latin,latin-ext" rel="stylesheet">
+
+    <link rel="stylesheet" href="//gtugablue.github.io/blog/themes/ghostium/assets/css/main.min.css?v=1534085924766">
+    <link rel="stylesheet" href="//gtugablue.github.io/blog/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1534085924766"/>
+
+    <script type="text/javascript">
+      var ga_ua = 'UA-XXXXX-X';
+      
+      var disqus_shortname = 'example';
+      
+      var enable_pjax = true;
+
+      // Pace Options
+      // ==============
+      window.paceOptions = {
+        catchupTime: 100,
+        minTime: 100,
+        elements: false,
+        restartOnRequestAfter: 500,
+        startOnPageLoad: false
+      }
+
+      // Ghostium Globals
+      // ==============
+      window.GHOSTIUM = {};
+      GHOSTIUM.haveGA = typeof ga_ua !== 'undefined' && ga_ua !== 'UA-XXXXX-X';
+      GHOSTIUM.haveDisqus = typeof disqus_shortname !== 'undefined' && disqus_shortname !== 'example';
+      GHOSTIUM.enablePjax = typeof enable_pjax !== 'undefined' ? enable_pjax : true;
+    </script>
+
+    <script src="//gtugablue.github.io/blog/themes/ghostium/assets/js/head-scripts.min.js?v=1534085924766"></script>
 
     <link rel="canonical" href="https://gtugablue.github.io/blog/2017/07/11/How-I-hacked-the-international-application-form-of-the-Barcelona-School-of-Informatics.html" />
     <meta name="referrer" content="origin" />
@@ -74,100 +127,94 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/themes/prism-okaidia.min.css">
     
         <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+  </head>
+  <body class="post-template tag-Hack tag-FIB tag-SQL-Injection">
 
-</head>
-<body class="post-template tag-Hack tag-FIB tag-SQL-Injection no-js">
-
-    <span class="mobile btn-mobile-menu">
-        <i class="icon icon-list btn-mobile-menu__icon"></i>
-        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
-    </span>
-
-    <header class="panel-cover panel-cover--collapsed " >
-      <div class="panel-main">
-    
-        <div class="panel-main__inner panel-inverted">
-        <div class="panel-main__content">
-    
-            <h1 class="panel-cover__title panel-title"><a href="https://gtugablue.github.io/blog" title="link to homepage for "></a></h1>
-            <hr class="panel-cover__divider" />
-            <p class="panel-cover__description">My personal blog.</p>
-            <hr class="panel-cover__divider panel-cover__divider--secondary" />
-    
-            <div class="navigation-wrapper">
-    
-              <nav class="cover-navigation cover-navigation--primary">
-                <ul class="navigation">
-                  <li class="navigation__item"><a href="https://gtugablue.github.io/blog/#blog" title="link to  blog" class="blog-button">Blog</a></li>
-                </ul>
-              </nav>
-    
-              
-              
-              <nav class="cover-navigation navigation--social">
-                <ul class="navigation">
-              
-              
-              
-              
-                  <!-- Github -->
-                  <li class="navigation__item">
-                    <a href="gtugablue" title="Github account">
-                      <i class='icon icon-social-github'></i>
-                      <span class="label">Github</span>
-                    </a>
-                  </li>
-                  </li>
-              
-              
-              
-              
-                  <!-- LinkedIn -->
-                  <li class="navigation__item">
-                    <a href="https://www.linkedin.com/in/silva95gustavo/" title="LinkedIn account">
-                      <i class='icon icon-social-linkedin'></i>
-                      <span class="label">LinkedIn</span>
-                    </a>
-                  </li>
-              
-                  <!-- Email -->
-                  <li class="navigation__item">
-                    <a href="mailto:silva95gustavo@gmail.com" title="Email silva95gustavo@gmail.com">
-                      <i class='icon icon-mail'></i>
-                      <span class="label">Email</span>
-                    </a>
-                  </li>
-              
-                </ul>
-              </nav>
-              
-    
-            </div>
-    
-          </div>
-    
-        </div>
-    
-        <div class="panel-cover--overlay"></div>
+    <button data-action="open-drawer" id="drawer-button" class="drawer-button"><i class="fa fa-bars"></i></button>
+    <nav tabindex="-1" class="drawer">
+      <div class="drawer-container">
+        <!--.drawer-search(role="search")-->
+        <ul role="navigation" class="drawer-list">
+          
+          <li class="drawer-list-item">
+            <a href="/" data-pjax>
+              <i class="fa fa-home"></i>Home
+            </a>
+          </li>
+          <li class="drawer-list-item">
+            <a href="https://gtugablue.github.io/blog/rss/">
+              <i class="fa fa-rss"></i>Subscribe to Feed
+            </a>
+          </li>
+          <li class="drawer-list-divider"></li>
+          <li class="drawer-list-item drawer-list-title">
+            Follow me
+          </li>
+          
+          
+          <li class="drawer-list-item">
+            <a href="gtugablue" title="Github" target="_blank">
+              <i class="fa fa-github"></i>Github
+            </a>
+          </li>
+          <li class="drawer-list-item">
+            <a href="https://www.linkedin.com/in/silva95gustavo/" title="LinkedIn" target="_blank">
+              <i class="fa fa-linkedin"></i>LinkedIn
+            </a>
+          </li>
+          <li class="drawer-list-item">
+            <a href="mailto:silva95gustavo@gmail.com" title="Email" target="_blank">
+              <i class="fa fa-envelope-o"></i>Email
+            </a>
+          </li>
+        </ul>
       </div>
-    </header>
+    </nav>
 
-    <div class="content-wrapper">
-        <div class="content-wrapper__inner">
+    <div class="drawer-overlay"></div>
+    <main id="container" role="main" class="container">
+      <div class="surface">
+        <div class="surface-container">
+          <div data-pjax-container class="content">
             
-
-  <article class="post-container post-container--single">
-
-    <header class="post-header">
-      <div class="post-meta">
-        <time datetime="11 Jul 2017" class="post-meta__date date">11 Jul 2017</time> &#8226; <span class="post-meta__tags tags">on <a href="https://gtugablue.github.io/blog/tag/Hack/">Hack</a>, <a href="https://gtugablue.github.io/blog/tag/FIB/">FIB</a>, <a href="https://gtugablue.github.io/blog/tag/SQL-Injection/">SQL_Injection</a></span>
-        <span class="post-meta__author author"><img src="https://avatars3.githubusercontent.com/u/3010353?v&#x3D;4" alt="profile image for Gustavo Silva" class="avatar post-meta__avatar" /> by Gustavo Silva</span>
-      </div>
-      <h1 class="post-title">How I hacked the international application form of the Barcelona School of Informatics</h1>
-    </header>
-
-    <section class="post tag-Hack tag-FIB tag-SQL-Injection">
-      <div id="preamble">
+<section class="wrapper wrapper-post">
+  <div class="wrapper-container">
+    <article itemscope itemtype="http://schema.org/BlogPosting" role="article" class="post post tag-Hack tag-FIB tag-SQL-Injection">
+        <section class="post-container">
+          <header class="post-header">
+            <ul class="post-meta-list">
+              <li class="post-meta-item">
+                <time datetime="2017-07-11" itemprop="datePublished">
+                  a year ago
+                </time>
+              </li>
+                <li class="post-meta-item">
+                    <a itemprop="articleSection" href="/" data-pjax>Hack</a>, 
+                    <a itemprop="keywords" href="/" data-pjax>FIB</a>, 
+                    <a itemprop="keywords" href="/" data-pjax>SQL_Injection</a> 
+                </li>
+              <li class="post-meta-item">
+                <a href="#disqus_thread" data-disqus-identifier="">Comments</a>
+              </li>
+            </ul>
+            <h1 itemprop="name headline" class="post-title"><a href="https://gtugablue.github.io/blog/2017/07/11/How-I-hacked-the-international-application-form-of-the-Barcelona-School-of-Informatics.html" itemprop="url" data-pjax title="How I hacked the international application form of the Barcelona School of Informatics">How I hacked the international application form of the Barcelona School of Informatics</a></h1>
+            <!--h2 itemprop="about" class="post-subtitle"></h2-->
+          </header>
+          <aside class="post-side">
+            <div class="post-author">
+                <a href="http://gustavosilva.me" class="post-author-avatar">
+                  <img src="https://avatars3.githubusercontent.com/u/3010353?v&#x3D;4" alt="Gustavo Silva">
+                </a>
+              <div class="post-author-info">
+                <a href="http://gustavosilva.me" class="post-author-name">
+                  Gustavo Silva
+                </a>
+                <p class="post-author-bio">Computer Engineering student at FEUP</p>
+              </div>
+            </div>
+          </aside>
+          <div itemprop="articleBody" class="post-body">
+            <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>As part of the incoming admission procedure of my Erasmus destination institution, <a href="http://www.fib.upc.edu/">Barcelona School of Informatics</a>, an application form had to be filled with information about me and the courses I planned on attending.</p>
@@ -295,43 +342,72 @@ This meant that my string could not contain any commas, as these were being repl
 </div>
 </div>
 </div>
-    </section>
+          </div>
+          <footer class="post-footer">
+            <div itemprop="author" itemscope itemtype="http://schema.org/Person" class="post-author">
+                <a href="http://gustavosilva.me" class="post-author-avatar">
+                  <img itemprop="image" src="https://avatars3.githubusercontent.com/u/3010353?v&#x3D;4" alt="Gustavo Silva">
+                </a>
+              <div class="post-author-info">
+                <h4 class="post-footer-heading">Written By</h4>
+                <a href="http://gustavosilva.me" itemprop="url" class="post-author-name">
+                  <span itemprop="name">Gustavo Silva</span>
+                </a>
+                <p itemprop="description" class="post-author-bio">Computer Engineering student at FEUP</p>
+                  <p class="post-author-website">
+                    <a href="http://gustavosilva.me" rel="nofollow">http://gustavosilva.me</a>
+                  </p>
+                <p class="post-info">
+                  <b class="post-info-title">Published on</b>
+                  <time class="post-date">July 11, 2017</time>
+                </p>
+              </div>
+            </div>
+            <div class="post-social">
+              <h4 class="post-footer-heading">Spread the word</h4>
+              <a href="#" data-action="share-twitter"><i class="fa fa-fw fa-lg fa-twitter"></i></a>
+              <a href="#" data-action="share-facebook"><i class="fa fa-fw fa-lg fa-facebook"></i></a>
+              <a href="#" data-action="share-gplus"><i class="fa fa-fw fa-lg fa-google-plus"></i></a>
+            </div>
+          </footer>
+        </section>
 
-  </article>
-
-  
-  <section class="post-comments">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
+      <section class="post-comments">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
         var disqus_shortname = 'disqus_lCJj1bgIJr'; // required: replace example with your forum shortname
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-  </section>
-  
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+
+    </article>
+
+    <footer role="contentinfo" class="footer">
+      <p><small>© 2018. All Rights Reserved.</small></p>
+      <p><small><a href="http://ghostium.oswaldoacauan.com/" target="_blank">Ghostium Theme</a> by <a href="http://twitter.com/oswaldoacauan" target="_blank">@oswaldoacauan</a></small></p>
+      <p><small>Proudly published with <a href="https://hubpress.github.io" target="_blank">HubPress</a></small></p>
+    </footer>
+  </div>
+</section>
 
 
-
-            <footer class="footer">
-                <span class="footer__copyright">&copy; 2018. All rights reserved.</span>
-                <span class="footer__copyright"><a href="http://uno.daleanthony.com" title="link to page for Uno Ghost theme">Uno theme</a> by <a href="http://daleanthony.com" title="link to website for Dale-Anthony">Dale-Anthony</a></span>
-                <span class="footer__copyright">Proudly published with <a href="https://hubpress.github.io" title="link to Hubpress website">Hubpress</a></span>
-            </footer>
+          </div>
         </div>
-    </div>
+      </div>
+    </main>
 
     <script
         src="https://code.jquery.com/jquery-3.2.1.min.js"
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous">
     </script>
-
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js?v="></script> <script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/prism.min.js?v="></script> 
       <script type="text/javascript">
         jQuery( document ).ready(function() {
@@ -345,7 +421,26 @@ This meant that my string could not contain any commas, as these were being repl
         // hljs.initHighlightingOnLoad();
       </script>
 
-    <script type="text/javascript" src="//gtugablue.github.io/blog/themes/uno/assets/js/main.js?v=1534085764285"></script>
+    <script src="//gtugablue.github.io/blog/themes/ghostium/assets/js/foot-scripts.min.js?v=1534085924766"></script>
+    
+    <script>
+        (function () {
+            var anchors = document.querySelectorAll('a');
+            for (var i = 0, l = anchors.length; i < l; i++) {
+                anchors[i].href = anchors[i].href.replace('gtugablue.github.io', 'gustavosilva.me')
+            }
+            var scripts = document.querySelectorAll('script');
+            for (var i = 0, l = scripts.length; i < l; i++) {
+                scripts[i].src = scripts[i].src.replace('gtugablue.github.io', 'gustavosilva.me')
+            }
+            var links = document.querySelectorAll('link');
+            for (var i = 0, l = links.length; i < l; i++) {
+                if (links[i].rel != 'stylesheet')
+                    continue
+                links[i].href = links[i].href.replace('gtugablue.github.io', 'gustavosilva.me')
+            }
+        }());
+    </script>
 
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -357,6 +452,5 @@ This meant that my string could not contain any commas, as these were being repl
     ga('send', 'pageview');
 
     </script>
-
-</body>
+  </body>
 </html>
