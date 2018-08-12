@@ -5,7 +5,7 @@
 :hp-tags: Hack, SIGARRA, SQL_Injection
 // :hp-alt-title: My English Title
 
-SIGARRA is the Information System for the Aggregated Management of Resources and Academic Records of the University of Porto. It serves 30 000+ students, as well as professors and other employees.
+SIGARRA is the Information System for the Aggregated Management of Resources and Academic Records of the University of Porto. It serves 30000+ students, as well as professors and other employees.
 
 As part of my work on my master's thesis, I sometimes consulted similar works from previous students, by accessing the list of previous dissertations of my course, available at https://sigarra.up.pt/feup/pt/teses.lista_teses?p_curso=742.
 
