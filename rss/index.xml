@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[My personal blog.]]></description><link>https://gtugablue.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Sun, 12 Aug 2018 15:21:03 GMT</lastBuildDate><atom:link href="https://gtugablue.github.io/blog/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[A failed attempt at hacking SIGARRA, the management system of the University of Porto]]></title><description><![CDATA[<div id="preamble">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[My personal blog.]]></description><link>https://gtugablue.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Tue, 23 Oct 2018 19:13:10 GMT</lastBuildDate><atom:link href="https://gtugablue.github.io/blog/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[A failed attempt at hacking SIGARRA, the management system of the University of Porto]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>SIGARRA is the Information System for the Aggregated Management of Resources and Academic Records of the University of Porto. It serves 30000+ students, as well as professors and other employees.</p>
@@ -231,7 +231,195 @@ PIVOT
 <p>Anyway, I emailed the developers behind SIGARRA with details on the vulnerability and they confirmed me that they had seen my intrusion attempts in their logs and quickly solved the issue. Therefore I was unable to exploit the system, but happy to know that my academic data is well secured.</p>
 </div>
 </div>
-</div>]]></description><link>https://gtugablue.github.io/blog/2018/08/12/A-failed-attempt-at-hacking-SIGARRA-the-management-system-of-the-University-of-Porto.html</link><guid isPermaLink="true">https://gtugablue.github.io/blog/2018/08/12/A-failed-attempt-at-hacking-SIGARRA-the-management-system-of-the-University-of-Porto.html</guid><category><![CDATA[Hack]]></category><category><![CDATA[SIGARRA]]></category><category><![CDATA[SQL_Injection]]></category><dc:creator><![CDATA[Gustavo Silva]]></dc:creator><pubDate>Sun, 12 Aug 2018 00:00:00 GMT</pubDate></item><item><title><![CDATA[How I hacked the international application form of the Barcelona School of Informatics]]></title><description><![CDATA[<div id="preamble">
+</div>]]></description><link>https://gtugablue.github.io/blog/2018/08/12/A-failed-attempt-at-hacking-SIGARRA-the-management-system-of-the-University-of-Porto.html</link><guid isPermaLink="true">https://gtugablue.github.io/blog/2018/08/12/A-failed-attempt-at-hacking-SIGARRA-the-management-system-of-the-University-of-Porto.html</guid><category><![CDATA[Hack]]></category><category><![CDATA[SIGARRA]]></category><category><![CDATA[SQL_Injection]]></category><dc:creator><![CDATA[Gustavo Silva]]></dc:creator><pubDate>Sun, 12 Aug 2018 00:00:00 GMT</pubDate></item><item><title><![CDATA[How I hacked Anda, the public transportation app of Porto (CVE-2018-13342)]]></title><description><![CDATA[<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Andante is the multimodal transport ticket used in the city of Porto. On the 28th July 2018, the company behind Andante released the Anda app to allow the users of their public transport system to no longer need a physical card as ticket. Instead, by taking advantage of the GPS, NFC and BLE capabilities of modern smartphones, passengers now only need their mobile phones to travel.</p>
+</div>
+<div class="paragraph">
+<p>I decided to observe the network packets sent by Anda to understand which kind of requests it was making to its API. Fot that, I used a packet sniffer app that acts as man-in-the-middle listinening to all packets in both directions. Since all communications of Anda are performed using HTTPS, the packet sniffer uses a custom certificate for which it has both the public and private keys. Soon I realized this did not work, because Anda was programmed to perform certificate pinning, that is, being limited to a pre-defined certificate and not accepting others. One solution for this is to change the Anda app so that it allows a different certificate to be used. However, sometimes tweaking with the application code to bypass certificate pinning is not enough, if other protection mechanisms are implemented.</p>
+</div>
+<div class="paragraph">
+<p>Instead of trying to obtain readable access to the network packets sent by Anda, I decided to decompile the .apk file and analyze the Java code to understand how it was communicating with the server API.</p>
+</div>
+<div class="paragraph">
+<p>The application code was slightly obfuscated. Some of the methods were not implemented in Java but imported as a compiled native library with Java Native Interface (JNI). These methods were:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>loadNative() - initialization of the JNI environment.</p>
+</li>
+<li>
+<p>verifyBeacon(byte[] b1, byte[] b2, int n) - did not investigate what this method does, probably related to BLE beacons.</p>
+</li>
+<li>
+<p>getServerInfo() - returns an array with 3 hard-coded strings that were obfuscated in the compiled library: the base URL of the API, a username and a password.</p>
+</li>
+<li>
+<p>getPersonalEncryptionkey() - returns a key based on the ANDROID_ID of the device.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In order to better understand the output of each of these functions, I analyzed the decompiled code of Anda and created a small Android application calling them in a similar manner and logging their output. This was the code of my app:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">System.loadLibrary("native-lib");
+
+boolean resultA = initializeNative();
+Log.d("ANDA-DEBUG", resultA ? "true" : "false");
+
+boolean resultB = verifyBeacon("".getBytes(), "".getBytes(), 1);
+Log.d("ANDA-DEBUG", resultB ? "true" : "false");
+
+String[] resultC = getServerInfo();
+for (String s : resultC) {
+    Log.d("ANDA-DEBUG", s + "");
+}
+
+String resultD = getPersonalEncryptionPass();
+Log.d("ANDA-DEBUG", resultD + "");</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This attempt was not successful, as the first two functions returned "false" and the other two returned null values. Something was blocking my app from properly using the methods defined in the native library file.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_disassembling">Disassembling</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>So I opened a disassembler and searched for what was causing this behavior. I noticed that all 4 functions made a call to another function named "isInitialized", immediately branching when false to a return statement with a zeroed return value. I figured this would most likely be the cause of the "false" and "null" outputs (zero, false and null are often represented the same way in machine code). Therefore, I had to understand why the "loadNative" method was not correctly initializing the JNI environment.</p>
+</div>
+<div class="paragraph">
+<p>Looking at the initialization instructions, I found that it was getting the signature of my application and comparing it with a pre-defined value to detect tampering. If the signatures did not match, then the program would branch to the end and return 0. This was done with the CBZ instruction (Compare and Branch on Zero).</p>
+</div>
+<div class="listingblock">
+<div class="title">Excert of the disassembled libnative library</div>
+<div class="content">
+<pre class="highlight"><code class="language-asm" data-lang="asm">BLX  __aeabi_memclr8
+ADD  R6, SP, #0xF0+var_C4
+MOV  R0, R6
+BLX  j_sha256_init
+MOV  R0, R6
+MOV  R1, R8
+MOV  R2, R5
+BLX  j_sha256_update
+MOV  R0, R6
+MOV  R1, R10
+BLX  j_sha256_final
+LDR  R1, =(unk_13B13 - 0x3AF4)
+MOV  R0, R10
+MOVS R2, #0x20
+ADD  R1, PC
+BLX  memcmp <i class="conum" data-value="1"></i><b>(1)</b>
+CBZ R0, loc_3B24</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>function of the C library that compares two regions of memory of the same size and returns 0 if they are equal</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In order to make my app bypass this verification, I patched the binary code so that the CBZ instruction was replaced by a CBNZ (Compare and Branch on Non-Zero). This successfuly allowed me to run the 4 library methods.</p>
+</div>
+<div class="paragraph">
+<p>In particular, I had all the information necessary to make API calls: the URL and authentication information.</p>
+</div>
+</div>
+</div>
+<h1 id="_acessing_the_api" class="sect0">Acessing the API</h1>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+	"CustomerAccount": {
+		"ID": "78134aa1-5aff-4fb1-80dd-2a9ae1cf7200",
+		"Name": "Gustavo Silva",
+		"Address": "",
+		"City": "Maia",
+		"Email": "silva95gustavo@example.com",
+		"Password": "my-ultra-unsafe-password",
+		"PostalCode": "",
+		"FiscalNumber": 0,
+		"IdentificationNumber": "",
+		"TIPCode": "0",
+		"Phone": "+351987654321",
+		"BillingInformationDetails": {
+			"ID": "1ef88e57-c75b-4fe1-b12c-bcadc1808a00",
+			"Name": "Gustavo Rocha da Silva",
+			"Address": "R. Dr. Augusto Martins 101",
+			"City": "Maia",
+			"PostalCode": "1234-567",
+			"FiscalNumber": 123456789,
+			"CountryDetails": {
+				"Id": "30b5fbdd-5044-4219-9ba3-fcfaf716d83d",
+				"Code": "PT",
+				"Name": "Portugal",
+				"InvoicerCode": "PORTUGAL_PT"
+			}
+		},
+		"CustomerPaymentMethod": {
+			"Name": "Cartão de crédito/débito",
+			"RefCode": "XXXXX",
+			"ThumbnailUrl": "https://example.com/images/thumbnail.png",
+			"InfoToCustomer": "Gustavo Rocha da Silva\r\n**** **** **** 1234\r\n10/2018"
+		}
+	}
+}</code></pre>
+</div>
+</div>
+<h1 id="_aftermath" class="sect0">Aftermath</h1>
+<div class="paragraph">
+<p>By that time (less than a week since the public release) the app already had over 10 000 installs and it was possible to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>View personal data from any user, including name, home address, last 4 digits of the credit card, phone number and fiscal number</p>
+</li>
+<li>
+<p>Read any user&#8217;s password in <strong>plain-text</strong></p>
+</li>
+<li>
+<p>Travel on the cost of others</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Following a responsible disclosure model, I reported the vulnerability to the developers of the application. Due to the absence of answer in 5 days and the urgency of the situation, I contacted <a href="https://en.wikipedia.org/wiki/Computer_emergency_response_team">CERT</a>.PT and detailed the vulnerability to them.</p>
+</div>
+<div class="paragraph">
+<p>The vulnerability was assigned the identifier <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-13342">CVE-2018-13342</a>.</p>
+</div>
+<div class="paragraph">
+<p>Timeline of events:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>4 July 2018 - Private disclosure</p>
+</li>
+<li>
+<p>7 July 2018 - Vendor acknowledgement</p>
+</li>
+<li>
+<p>~11 July 2018 - Passwords no longer stored in plain-text</p>
+</li>
+<li>
+<p>9 September 2018 - New app version released using a safer API</p>
+</li>
+<li>
+<p>23 October 2018 - Shutdown of the old vulnerable API</p>
+</li>
+</ul>
+</div>]]></description><link>https://gtugablue.github.io/blog/2018/07/06/How-I-hacked-Anda-the-public-transportation-app-of-Porto-CVE-2018-13342.html</link><guid isPermaLink="true">https://gtugablue.github.io/blog/2018/07/06/How-I-hacked-Anda-the-public-transportation-app-of-Porto-CVE-2018-13342.html</guid><dc:creator><![CDATA[Gustavo Silva]]></dc:creator><pubDate>Fri, 06 Jul 2018 00:00:00 GMT</pubDate></item><item><title><![CDATA[How I hacked the international application form of the Barcelona School of Informatics]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>As part of the incoming admission procedure of my Erasmus destination institution, <a href="http://www.fib.upc.edu/">Barcelona School of Informatics</a>, an application form had to be filled with information about me and the courses I planned on attending.</p>
