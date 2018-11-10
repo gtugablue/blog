@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[My personal blog.]]></description><link>https://gtugablue.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Sun, 28 Oct 2018 15:43:04 GMT</lastBuildDate><atom:link href="https://gtugablue.github.io/blog/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[How I hacked Anda, the public transportation app of Porto (CVE-2018-13342)]]></title><description><![CDATA[<div id="preamble">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[My personal blog.]]></description><link>https://gtugablue.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Sat, 10 Nov 2018 15:49:57 GMT</lastBuildDate><atom:link href="https://gtugablue.github.io/blog/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[How I hacked Anda, the public transportation app of Porto (CVE-2018-13342)]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>Andante is the multimodal transport ticket used in the city of Porto. On the 28th July 2018, the company behind Andante released the Anda app to allow the users of their public transport system to no longer need a physical card as ticket. Instead, by taking advantage of the GPS, NFC and BLE capabilities of modern smartphones, passengers now only need their mobile phones to travel.</p>
@@ -102,7 +102,7 @@ CBZ R0, loc_3B24</code></pre>
 </div>
 </div>
 </div>
-<h1 id="_acessing_the_api" class="sect0">Acessing the API</h1>
+<h1 id="_accessing_the_api" class="sect0">Accessing the API</h1>
 <div class="paragraph">
 <p>Turns out that the credentials used for API calls were the same for all users, and hardcoded in the native library I had just decompiled. Therefore, using these credentials, it was possible for me to make any request to the API with unlimited permissions. For example, if I requested the information of a customer, I would get an output similar to the following:</p>
 </div>
