@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[My personal blog.]]></description><link>https://gtugablue.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Sat, 10 Nov 2018 15:49:57 GMT</lastBuildDate><atom:link href="https://gtugablue.github.io/blog/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[How I hacked Anda, the public transportation app of Porto (CVE-2018-13342)]]></title><description><![CDATA[<div id="preamble">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[My personal blog.]]></description><link>https://gtugablue.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Fri, 23 Nov 2018 00:04:51 GMT</lastBuildDate><atom:link href="https://gtugablue.github.io/blog/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[How I hacked Anda, the public transportation app of Porto (CVE-2018-13342)]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>Andante is the multimodal transport ticket used in the city of Porto. On the 28th July 2018, the company behind Andante released the Anda app to allow the users of their public transport system to no longer need a physical card as ticket. Instead, by taking advantage of the GPS, NFC and BLE capabilities of modern smartphones, passengers now only need their mobile phones to travel.</p>
@@ -83,7 +83,7 @@ MOV  R0, R10
 MOVS R2, #0x20
 ADD  R1, PC
 BLX  memcmp <i class="conum" data-value="1"></i><b>(1)</b>
-CBZ R0, loc_3B24</code></pre>
+CBZ  R0, loc_3B24</code></pre>
 </div>
 </div>
 <div class="colist arabic">
