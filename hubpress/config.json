@@ -1,6 +1,6 @@
 {
   "meta": {
-    "username": "silva95gustavo",
+    "username": "gtugablue",
     "repositoryName": "blog",
     "branch": "gh-pages",
     "cname": ""
@@ -9,10 +9,10 @@
     "name": "ghostium"
   },
   "urls": {
-    "site": "https://silva95gustavo.github.io/blog",
+    "site": "https://gtugablue.github.io/blog",
     "hubpress": "https://gustavosilva.me/blog",
-    "theme": "//silva95gustavo.github.io/blog/themes/ghostium",
-    "images": "https://silva95gustavo.github.io/blog/images"
+    "theme": "//gtugablue.github.io/blog/themes/ghostium",
+    "images": "https://gtugablue.github.io/blog/images"
   },
   "initialisationConfigComponent": {
     "name": "initialise-configuration",
