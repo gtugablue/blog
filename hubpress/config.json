@@ -53,10 +53,5 @@
     "paypalme": "",
     "opencollective": ""
   },
-  "navigation": [
-    {
-      "label": "About me",
-      "url": "https://gustavosilva.me"
-    }
-  ]
+  "navigation": []
 }
